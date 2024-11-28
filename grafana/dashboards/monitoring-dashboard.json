@@ -1,0 +1,26 @@
+{
+    "title": "Banking System Dashboard",
+    "panels": [
+      {
+        "type": "graph",
+        "title": "CPU Usage",
+        "targets": [
+          {
+            "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode='idle'}[5m])) * 100)",
+            "legendFormat": "{{instance}}"
+          }
+        ]
+      },
+      {
+        "type": "graph",
+        "title": "Kafka Consumer Lag",
+        "targets": [
+          {
+            "expr": "kafka_consumer_lag{group='fraud-detector'}",
+            "legendFormat": "{{topic}}"
+          }
+        ]
+      }
+    ]
+  }
+  
